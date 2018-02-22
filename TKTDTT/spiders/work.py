@@ -23,22 +23,11 @@ class VnWorkSpider(scrapy.Spider):
     def parse_src(self, response):
         self.item = TktdttItem()
         self.item["job"] = response.xpath('//div[@class="col-md-7"]/h1/span/text()').extract()
-        # self.item["company"] = response.xpath('//h1[@class="comp-name"]/a/text()').extract()
-        # self.item["area"] = response.xpath('//p/b/span/a/text()').extract()
-        # salary = ""
-        # for sl in response.xpath('//p/b/span[@class="norB colorG"]/text()').extract():
-        #     salary = salary + "-" + sl
-        # self.item["salary"] = salary
-        # info_job = response.xpath('////div[@class="info_job"]/li[@class="home-col12"]/p/text()').extract()
-        # self.item["exp"] = info_job[0]
-        # self.item["quantum"] = info_job[2]
-        # desjob = response.xpath('//div[@class="desjob-company"]').extract()
-        # self.item["description"]  = re.sub(r'<.*?>', '', desjob[1])
-        # self.item["benefit"] = re.sub(r'<.*?>', '', desjob[2])
-        # self.item["require"] = re.sub(r'<.*?>', '', desjob[3])
-        # self.item["cv"] = re.sub(r'<.*?>', '', desjob[4])
-        # self.item["skill"] = response.xpath('//div[@class="desjob-company"]/div/span/a/text()').extract()
-        # self.item["addresscompany"] = response.xpath('//div[@class="boxcontact-copmpany"]/table/tbody/tr[2]/td[2]/text()').extract()
-        # self.item["deadline"] = response.xpath('//div[@class="boxcontact-copmpany"]/table/tbody/tr[4]/td[2]/text()').extract()
-
+        self.item["company"] = response.xpath('//h2[@class="desc-for-title mb-15"]/span/text()').extract()
+        #self.item["salary"] = response.xpath('//div[@class="row row-standard"]/div[@class="col-md-7"]/p/span/text()').extract()[0]
+        require = response.xpath('//div[@class="box multiple"]/div[@class="mw-box-item"]').extract()
+        if len(require) > 2:
+            self.item["require"] = re.sub(r'<.*?>', '. ', require[2])
+        else:
+            self.item["require"] = ""
         yield self.item

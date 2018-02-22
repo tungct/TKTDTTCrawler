@@ -9,9 +9,9 @@ import scrapy
 
 
 class TktdttItem(scrapy.Item):
-    # company = scrapy.Field()
     job = scrapy.Field()
-    # area = scrapy.Field()
+    company = scrapy.Field()
+    require = scrapy.Field()
     # salary = scrapy.Field()
     # exp = scrapy.Field()
     # quantum = scrapy.Field()
