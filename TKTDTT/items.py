@@ -9,16 +9,6 @@ import scrapy
 
 
 class TktdttItem(scrapy.Item):
-    job = scrapy.Field()
-    company = scrapy.Field()
-    require = scrapy.Field()
-    # salary = scrapy.Field()
-    # exp = scrapy.Field()
-    # quantum = scrapy.Field()
-    # description = scrapy.Field()
-    # benefit = scrapy.Field()
-    # require = scrapy.Field()
-    # cv = scrapy.Field()
-    # addresscompany = scrapy.Field()
-    # deadline = scrapy.Field()
-    # skill = scrapy.Field()
+    url = scrapy.Field()
+    title = scrapy.Field()
+    content = scrapy.Field()
