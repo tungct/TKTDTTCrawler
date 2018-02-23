@@ -23,7 +23,11 @@ class VnWorkSpider(scrapy.Spider):
     def parse_src(self, response):
         self.item = TktdttItem()
         self.item["url"] = response.request.url
-        self.item["title"] = response.xpath('//h1[@class="main-title"]/span/text()').extract()
+        title = response.xpath('//h1[@class="main-title"]/span/text()').extract()
+        if len(title) > 0:
+            self.item["title"] = title[0]
+        else:
+            self.item["title"] = ""
         content = response.xpath('//div[@class="box multiple"]/div[@class="mw-box-item"]').extract()
         if len(content) > 1:
             self.item["content"] = re.sub(r'<.*?>', '. ', content[2])
