@@ -15,11 +15,11 @@ SPIDER_MODULES = ['TKTDTT.spiders']
 NEWSPIDER_MODULE = 'TKTDTT.spiders'
 FEED_EXPORT_ENCODING = 'utf-8'
 
-SPIDER_MIDDLEWARES = {
-    'scrapy_deltafetch.DeltaFetch': 300,
-}
-
-DELTAFETCH_ENABLED = True
+# SPIDER_MIDDLEWARES = {
+#     'scrapy_deltafetch.DeltaFetch': 300,
+# }
+#
+# DELTAFETCH_ENABLED = True
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'TKTDTT (+http://www.yourdomain.com)'
